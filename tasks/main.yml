@@ -31,3 +31,10 @@
 - name: NPM Install global packages
   npm: name={{item}} global=yes
   with_items: nodejs_global_packages
+
+- name: Instal packages in variable
+  npm:
+    name={{ item }}
+    state=present
+    global=yes
+  with_items: "{{ npm_packages }}"
